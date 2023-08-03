@@ -1,6 +1,6 @@
 from flask import Flask
 from extensions import database
-from blueprints.loginpage import login_bp
+from blueprints.login import login_bp
 from extensions.auth import login_manager
 
 app = Flask(__name__)

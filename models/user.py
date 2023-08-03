@@ -18,4 +18,5 @@ class User(db.Model, UserMixin):
             self.is_admin = self.categoria == 1
 
     def verify_password(self, pwd):
+        print('verificacao de senha:', check_password_hash(self.password, pwd))
         return check_password_hash(self.password, pwd)

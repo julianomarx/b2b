@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template, request, flash, redirect, url_for
 from flask_login import login_required
 from models.user import User
-from flask_login import login_user
+from flask_login import login_user, current_user
 from extensions.database import db
 
 login_bp = Blueprint('login_bp', __name__, template_folder='templates')
@@ -28,7 +28,10 @@ def login():
             return redirect(url_for('login_bp.login'))
 
         login_user(user)
-        return redirect(url_for('login_bp.home', user.categoria))
+        
+        print(current_user)
+
+        return redirect(url_for('login_bp.home', categoria=user.categoria))
 
     return render_template('login_page.html')
 
@@ -53,10 +56,10 @@ def register():
         
     return render_template('register.html')
 
-@login_bp.route('/home')
+@login_bp.route('/home/<int:categoria>')
 @login_required
 def home(categoria):
     
-    template = controle_de_acesso[categoria]
+    template = controle_de_acesso[int(current_user.categoria)]
 
     return render_template(template)
