@@ -3,7 +3,7 @@ from flask_login import login_required
 from models.user import User
 from flask_login import login_user, current_user
 from extensions.database import db
-
+from blueprints.calendars.calendars import DataToCalendar
 login_bp = Blueprint('login_bp', __name__, template_folder='templates')
 
 def init_app(app):
@@ -62,4 +62,7 @@ def home(categoria):
     
     template = controle_de_acesso[int(current_user.categoria)]
 
-    return render_template(template)
+    data_calendar = DataToCalendar(2023, 8).data
+    return render_template(template, data_calendar=data_calendar)
+
+

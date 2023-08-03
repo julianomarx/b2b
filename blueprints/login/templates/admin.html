@@ -3,12 +3,76 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Calendar</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        th, td {
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
+        
+        th {
+            background-color: #f2f2f2;
+        }
+        
+        td {
+            height: 100px;
+            vertical-align: top;
+        }
+    </style>
 </head>
 <body>
+    <h1>Calendar</h1>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>Seg</th>
+                <th>Ter</th>
+                <th>Qua</th>
+                <th>Qui</th>
+                <th>Sex</th>
+                <th>Sab</th>
+                <th>Dom</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for week in data_calendar %}
+                <tr>
 
-    admin
-    {{current_user.categoria}}
+                    {% for day in week %}
+                        <div class="day">
+                            
+                            <td>{{ day }}
+                                <div>
+                                    <form action="">
+                                        <label for="{{'dbc' + day}}">DBC</label>
+                                        <input type="number" name="{{'dbc' + day}}" id="dbc_day">
+    
+                                        <label for="{{'twc' + day}}">TWC</label>
+                                        <input type="number" name="" id="">
+                                        
+                                        <label for="dsc_day">DSC</label>
+                                        <input type="number" name="" id="">
+                                    </form>
+                                </div>
+                            </td>
 
+                        </div>
+                    {% endfor %}
+                    
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 </body>
 </html>
