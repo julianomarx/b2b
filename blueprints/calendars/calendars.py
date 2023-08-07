@@ -13,6 +13,7 @@ class DataToCalendar:
             6 : "Domingo"
         }
 
+
         mes = calendar.Calendar().monthdatescalendar(year_as_int,month_as_int)
         formato = "%d-%m-%Y"
         list_to_return = list()
@@ -28,5 +29,4 @@ class DataToCalendar:
 
             list_to_return.append(tuple(semana_l))
 
-        self.month_name = calendar.month_name()
         self.data = list_to_return
